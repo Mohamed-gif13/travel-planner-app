@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ItineraryPage from "./pages/ItineraryPage";
+import DestinationPage from "./pages/DestinationPage";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/itinerary" element={<ItineraryPage />} />
+            <Route path="/destination/:id" element={<DestinationPage />} />
           </Routes>
         </main>
         <Footer />
