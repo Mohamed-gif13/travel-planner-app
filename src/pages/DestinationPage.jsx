@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Weather from "../components/Weather";
+import MapBox from "../components/MapBox";
+import SkyscannerLinks from "../components/SkyscannerLinks";
 
 // Données fictives simulées
 const mockDestinations = [
@@ -69,6 +71,8 @@ export default function DestinationPage() {
 
         {/* Météo */}
         <Weather city={destination.name} />
+        <MapBox city={destination.name} />
+        <SkyscannerLinks city={destination.name} />
       </div>
     </div>
   );
