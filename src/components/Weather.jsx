@@ -30,7 +30,7 @@ export default function Weather({ city }) {
           }
 
           if (sound) {
-            sound.volume = 0.4;
+            sound.volume = 0.1;
             sound.loop = true;
             sound.play().catch((err) =>
               console.warn("Audio play blocked by browser:", err)

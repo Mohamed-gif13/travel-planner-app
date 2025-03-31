@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
+// Configuration de l'icône par défaut de Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
@@ -69,17 +70,21 @@ export default function CitySearch() {
             📍 {search}
           </h2>
 
-          <img
-            src={`https://source.unsplash.com/800x400/?${search}`}
-            alt={search}
-            className="w-full h-64 object-cover rounded mb-4"
-          />
+          {/* ✅ Image avec Fallback */}
+          <div className="w-full h-64 mb-4 rounded overflow-hidden">
+            <img
+              src={`https://source.unsplash.com/800x400/?city,${search}&sig=1`}
+              alt={search}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = "/fallback.jpg"; // ✅ Fichier dans /public
+              }}
+            />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Weather */}
-            <div>
-              <Weather city={search} />
-            </div>
+            <Weather city={search} />
 
             {/* Map */}
             <div className="h-64 rounded overflow-hidden">
@@ -95,7 +100,7 @@ export default function CitySearch() {
             </div>
           </div>
 
-          {/* Skyscanner Links */}
+          {/* Skyscanner Booking Links */}
           <SkyscannerLinks city={search} />
         </div>
       )}

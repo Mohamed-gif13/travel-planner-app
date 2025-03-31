@@ -1,36 +1,53 @@
-// src/components/Itinerary.jsx
-
 import { useEffect, useState } from "react";
-import ItineraryItem from "./ItineraryItem";
 
 export default function Itinerary() {
   const [items, setItems] = useState([]);
 
-  // Charger les données depuis localStorage au démarrage
   useEffect(() => {
-    const stored = localStorage.getItem("itinerary");
-    if (stored) {
-      setItems(JSON.parse(stored));
-    }
+    const saved = JSON.parse(localStorage.getItem("itinerary")) || [];
+    setItems(saved);
   }, []);
 
-  // Supprimer une destination
   const handleRemove = (id) => {
     const updated = items.filter((item) => item.id !== id);
     setItems(updated);
     localStorage.setItem("itinerary", JSON.stringify(updated));
   };
 
+  if (items.length === 0) {
+    return (
+      <p className="text-center text-gray-500 dark:text-gray-400">
+        Aucun itinéraire enregistré.
+      </p>
+    );
+  }
+
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Your Itinerary</h2>
-      {items.length === 0 ? (
-        <p>No destinations added yet.</p>
-      ) : (
-        items.map((item) => (
-          <ItineraryItem key={item.id} item={item} onRemove={handleRemove} />
-        ))
-      )}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {items.map((item) => (
+        <div
+          key={item.id}
+          className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md flex flex-col"
+        >
+          <img
+            src={item.image || "/fallback.jpg"}
+            alt={item.name}
+            className="h-48 w-full object-cover rounded mb-4"
+          />
+          <h3 className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-2">
+            {item.name}
+          </h3>
+          <p className="text-gray-700 dark:text-gray-200 mb-4">
+            {item.description}
+          </p>
+          <button
+            onClick={() => handleRemove(item.id)}
+            className="mt-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+          >
+            Supprimer
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
