@@ -11,7 +11,7 @@ import Signup from "./pages/Signup";
 function App() {
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat transition-all"
+      className="min-h-screen bg-cover bg-center bg-no-repeat transition-all fade-in"
       style={{
         backgroundImage: "url('/background.jpg')",
         backgroundSize: "cover",
@@ -19,10 +19,10 @@ function App() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="bg-white/70 dark:bg-gray-900/80 min-h-screen">
+      <div className="bg-white/70 dark:bg-gray-900/80 min-h-screen fade-in">
         <Router>
           <Navbar />
-          <main className="pt-32 pb-12">
+          <main className="pt-32 pb-12 fade-in">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/destination/:id" element={<DestinationPage />} />

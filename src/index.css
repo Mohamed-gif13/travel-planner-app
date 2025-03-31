@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Animation pour fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Animation pour l'effet de zoom (scale-up) */
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-up {
+  animation: scaleUp 0.5s ease-out;
+}
+
+/* Animation pour hover sur les images et les cartes */
+@keyframes hoverScale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.hover-scale:hover {
+  animation: hoverScale 0.3s ease-in-out;
+}
+
+/* Animation pour les transitions fluides */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ajoutez ce code CSS dans votre fichier index.css */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .rotate-icon {
+    animation: rotate 2s linear infinite;
+  }
