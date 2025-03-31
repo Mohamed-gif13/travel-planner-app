@@ -23,11 +23,11 @@ export default function Itinerary() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((item) => (
         <div
           key={item.id}
-          className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md flex flex-col"
+          className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover:shadow-xl transition-all flex flex-col"
         >
           <img
             src={item.image || "/fallback.jpg"}
@@ -37,7 +37,7 @@ export default function Itinerary() {
           <h3 className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-2">
             {item.name}
           </h3>
-          <p className="text-gray-700 dark:text-gray-200 mb-4">
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
             {item.description}
           </p>
           <button

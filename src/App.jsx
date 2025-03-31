@@ -14,6 +14,9 @@ function App() {
       className="min-h-screen bg-cover bg-center bg-no-repeat transition-all"
       style={{
         backgroundImage: "url('/background.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="bg-white/70 dark:bg-gray-900/80 min-h-screen">

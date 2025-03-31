@@ -27,23 +27,25 @@ export default function DestinationList({ searchTerm }) {
   );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
       {filtered.map(dest => (
         <Link
           to={`/destination/${dest.id}`}
           key={dest.id}
-          className="block border rounded shadow p-4 hover:bg-gray-100 transition"
+          className="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition p-4"
         >
           <img
             src={dest.image}
             alt={dest.name}
-            className="w-full h-40 object-cover rounded mb-2"
+            className="w-full h-40 object-cover rounded mb-3"
           />
-          <h3 className="text-xl font-semibold">{dest.name}</h3>
-          <p className="text-sm text-gray-600">{dest.description}</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-white">{dest.name}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300">{dest.description}</p>
         </Link>
       ))}
-      {filtered.length === 0 && <p>No destinations found.</p>}
+      {filtered.length === 0 && (
+        <p className="col-span-full text-center text-gray-500">No destinations found.</p>
+      )}
     </div>
   );
 }
