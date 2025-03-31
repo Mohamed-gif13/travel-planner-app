@@ -10,7 +10,7 @@ export default function Profile() {
   useEffect(() => {
     const currentUser = getCurrentUser();
     if (!currentUser) {
-      navigate("/login"); // Rediriger s'il n'est pas connecté
+      navigate("/login"); 
     } else {
       setUser(currentUser);
       const saved = JSON.parse(localStorage.getItem("itinerary")) || [];

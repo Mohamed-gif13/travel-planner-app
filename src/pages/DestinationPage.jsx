@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { fetchCityImages, fetchWeather, fetchCityLocation } from "../utils/api"; // Import des fonctions d'API
 import Weather from "../components/Weather";
 import MapBox from "../components/MapBox";
 import SkyscannerLinks from "../components/SkyscannerLinks";
@@ -9,19 +10,16 @@ const mockDestinations = [
     id: 1,
     name: "Paris",
     description: "The City of Light, with iconic landmarks and romantic atmosphere.",
-    image: "https://source.unsplash.com/600x400/?paris",
   },
   {
     id: 2,
     name: "Tokyo",
     description: "A futuristic city blending tradition and innovation.",
-    image: "https://source.unsplash.com/600x400/?tokyo",
   },
   {
     id: 3,
     name: "Marrakech",
     description: "A vibrant Moroccan city with colorful souks and ancient medina.",
-    image: "https://source.unsplash.com/600x400/?marrakech",
   },
 ];
 
@@ -29,10 +27,23 @@ export default function DestinationPage() {
   const { id } = useParams();
   const [destination, setDestination] = useState(null);
   const [added, setAdded] = useState(false);
+  const [image, setImage] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
     const found = mockDestinations.find((d) => d.id === parseInt(id));
-    setDestination(found);
+    if (found) {
+      setDestination(found);
+      const stored = JSON.parse(localStorage.getItem("itinerary")) || [];
+      const alreadyAdded = stored.some((item) => item.id === found.id);
+      setAdded(alreadyAdded);
+      
+      // Fetch image, weather, and location data
+      fetchCityImages(found.name).then(setImage);
+      fetchWeather(found.name).then(setWeather);
+      fetchCityLocation(found.name).then(setLocation);
+    }
   }, [id]);
 
   const handleAddToItinerary = () => {
@@ -47,20 +58,20 @@ export default function DestinationPage() {
 
   if (!destination)
     return (
-      <div className="text-center text-gray-600 py-20">
-        <p>Destination not found.</p>
+      <div className="text-center text-gray-600 dark:text-gray-300 py-20">
+        <p>❌ Destination not found.</p>
       </div>
     );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-lg shadow-xl p-8 transition duration-300">
         <h2 className="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-6">
           {destination.name}
         </h2>
 
         <img
-          src={destination.image}
+          src={image || "/fallback.jpg"} // Affiche l'image récupérée ou une image par défaut
           alt={destination.name}
           className="w-full h-72 object-cover rounded-lg mb-6"
         />
@@ -81,9 +92,21 @@ export default function DestinationPage() {
           </button>
         </div>
 
-        {/* Sections supplémentaires */}
-        <Weather city={destination.name} />
-        <MapBox city={destination.name} />
+        {/* Display Weather Data */}
+        {weather && (
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold mb-4">Weather in {destination.name}</h3>
+            <p>{weather.main.temp}°C</p>
+            <p>{weather.weather[0].description}</p>
+          </div>
+        )}
+
+        {/* Map and Skyscanner links */}
+        {location && (
+          <div className="mb-8">
+            <MapBox city={destination.name} location={location} />
+          </div>
+        )}
         <SkyscannerLinks city={destination.name} />
       </div>
     </div>

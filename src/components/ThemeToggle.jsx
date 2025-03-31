@@ -4,24 +4,19 @@ export default function ThemeToggle() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme") === "dark";
-    setDarkMode(saved);
-    document.documentElement.classList.toggle("dark", saved);
-  }, []);
-
-  const toggleTheme = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    document.documentElement.classList.toggle("dark", newMode);
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-  };
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <button
-      onClick={toggleTheme}
-      className="bg-gray-200 dark:bg-gray-800 text-black dark:text-white px-4 py-2 rounded shadow hover:opacity-80 transition"
+      onClick={() => setDarkMode(!darkMode)}
+      className="ml-4 px-3 py-1 rounded text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition"
     >
-      {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+      {darkMode ? "🌙 Dark" : "☀️ Light"}
     </button>
   );
 }

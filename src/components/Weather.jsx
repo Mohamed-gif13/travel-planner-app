@@ -15,7 +15,7 @@ export default function Weather({ city }) {
         if (data.cod === 200) {
           setWeather(data);
 
-          // 🎵 Son météo
+          // 🎵 Weather sound
           const condition = data.weather[0].main.toLowerCase();
           let sound;
 
@@ -47,7 +47,7 @@ export default function Weather({ city }) {
   if (!weather)
     return <p className="text-sm text-gray-500">Weather unavailable</p>;
 
-  // 🎨 Emoji météo
+  // 🎨 Weather emoji 
   const icon = weather.weather[0].main;
   let emoji = "🌡️";
 

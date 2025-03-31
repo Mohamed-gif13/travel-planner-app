@@ -15,12 +15,12 @@ export default function Signup() {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      setError("Adresse email invalide.");
+      setError("Invalid email address.");
       return;
     }
 
     if (password.length < 6) {
-      setError("Le mot de passe doit contenir au moins 6 caractères.");
+      setError("The password must be at least 6 characters long.");
       return;
     }
 
@@ -36,12 +36,12 @@ export default function Signup() {
   return (
     <div className="max-w-md mx-auto mt-10 bg-white dark:bg-gray-800 p-6 rounded shadow">
       <h2 className="text-2xl font-bold mb-4 text-center text-blue-700 dark:text-blue-300">
-        Créer un compte
+      Create an account
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
-          type="email"
-          placeholder="Adresse email"
+          type="Email"
+          placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full px-4 py-2 rounded border focus:outline-none focus:ring focus:ring-blue-400"
@@ -49,7 +49,7 @@ export default function Signup() {
         />
         <input
           type="password"
-          placeholder="Mot de passe"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full px-4 py-2 rounded border focus:outline-none focus:ring focus:ring-blue-400"
@@ -61,7 +61,7 @@ export default function Signup() {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
-          S'inscrire
+          Sign up
         </button>
       </form>
     </div>

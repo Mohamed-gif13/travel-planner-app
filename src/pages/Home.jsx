@@ -1,4 +1,5 @@
 import CitySearch from "../components/CitySearch";
+import DestinationList from "../components/DestinationList";
 
 export default function Home() {
   return (

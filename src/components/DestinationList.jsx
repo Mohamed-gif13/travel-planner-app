@@ -32,15 +32,18 @@ export default function DestinationList({ searchTerm }) {
         <Link
           to={`/destination/${dest.id}`}
           key={dest.id}
-          className="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition p-4"
+          className="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 p-4 transform"
         >
-          <img
-            src={dest.image}
-            alt={dest.name}
-            className="w-full h-40 object-cover rounded mb-3"
-          />
-          <h3 className="text-xl font-bold text-gray-800 dark:text-white">{dest.name}</h3>
+          <div className="overflow-hidden rounded mb-3">
+            <img
+              src={dest.image}
+              alt={dest.name}
+              className="w-full h-40 object-cover rounded transform hover:scale-105 transition duration-300"
+            />
+          </div>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">{dest.name}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300">{dest.description}</p>
+          <p className="text-xs text-blue-500 mt-2 italic">📌 Click to view more</p>
         </Link>
       ))}
       {filtered.length === 0 && (

@@ -17,7 +17,7 @@ export default function Itinerary() {
   if (items.length === 0) {
     return (
       <p className="text-center text-gray-500 dark:text-gray-400">
-        Aucun itinéraire enregistré.
+        No itinerary saved.
       </p>
     );
   }

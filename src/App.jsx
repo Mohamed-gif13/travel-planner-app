@@ -22,7 +22,7 @@ function App() {
       <div className="bg-white/70 dark:bg-gray-900/80 min-h-screen">
         <Router>
           <Navbar />
-          <main className="pt-20 pb-8">
+          <main className="pt-32 pb-12">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/destination/:id" element={<DestinationPage />} />
