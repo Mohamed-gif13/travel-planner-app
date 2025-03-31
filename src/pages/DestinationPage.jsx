@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Weather from "../components/Weather";
 
-// Données mockées pour tester
+// Données fictives simulées
 const mockDestinations = [
   {
     id: 1,
@@ -65,6 +66,9 @@ export default function DestinationPage() {
         >
           {added ? "Added to Itinerary ✅" : "Add to Itinerary"}
         </button>
+
+        {/* Météo */}
+        <Weather city={destination.name} />
       </div>
     </div>
   );
