@@ -7,10 +7,10 @@ import DestinationPage from "./pages/DestinationPage";
 
 export default function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-800 dark:text-white transition-colors duration-300">
+      <Router>
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-6">
+        <main className="py-8">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/itinerary" element={<ItineraryPage />} />
@@ -18,7 +18,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
