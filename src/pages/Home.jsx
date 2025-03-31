@@ -1,19 +1,19 @@
-import { useState } from "react";
-import SearchBar from "../components/SearchBar";
-import DestinationList from "../components/DestinationList";
+import CitySearch from "../components/CitySearch";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
-
   return (
     <div className="max-w-6xl mx-auto px-4 transition-all duration-300">
-      <div className="bg-blue-100 dark:bg-blue-900 text-center p-6 rounded-lg shadow mb-6 text-gray-800 dark:text-white transition">
-        <h2 className="text-3xl font-bold mb-2">Plan Your Next Trip ✈️</h2>
-        <p className="text-gray-700 dark:text-gray-300">Search for exciting destinations around the world!</p>
+      <div className="bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-900 dark:to-purple-900 text-center p-10 rounded-lg shadow-lg mb-8">
+        <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+          🌍 Global Travel Planner
+        </h2>
+        <p className="text-gray-700 dark:text-gray-200 text-lg">
+          Discover any city in the world, check the weather, explore the location, and plan your trip!
+        </p>
       </div>
 
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <DestinationList searchTerm={searchTerm} />
+      {/* New global city search component */}
+      <CitySearch />
     </div>
   );
 }
