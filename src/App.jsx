@@ -4,6 +4,9 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import DestinationPage from "./pages/DestinationPage";
 import ItineraryPage from "./pages/ItineraryPage";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/destination/:id" element={<DestinationPage />} />
               <Route path="/itinerary" element={<ItineraryPage />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </main>
           <Footer />

@@ -3,17 +3,34 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white shadow p-4">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          <Link to="/">🌍 Travel Planner</Link>
-        </h1>
-        <div className="flex items-center gap-4">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/itinerary" className="hover:underline">Itinerary</Link>
+    <header className="fixed top-0 w-full bg-white dark:bg-gray-900 shadow z-50">
+      <nav className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <Link to="/" className="text-xl font-bold text-blue-600 dark:text-blue-300">
+          🌍 Travel Planner
+        </Link>
+
+        <div className="flex items-center gap-6">
+          <Link
+            to="/"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
+          >
+            Home
+          </Link>
+          <Link
+            to="/itinerary"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
+          >
+            Itinerary
+          </Link>
+          <Link
+            to="/profile"
+            className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
+          >
+            👤 Profile
+          </Link>
           <ThemeToggle />
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
