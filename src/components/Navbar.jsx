@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle"; // Si vous avez ce composant pour changer de thème
+import ThemeToggle from "./ThemeToggle"; 
 
 export default function Navbar() {
   return (
@@ -10,7 +10,7 @@ export default function Navbar() {
         <span className="text-3xl font-extrabold text-blue-600 dark:text-white rotate-icon">🌍</span>          <h1 className="text-xl font-bold text-blue-600 dark:text-white">Travel Planner</h1>
         </div>
 
-        {/* Liens de navigation */}
+        {/* Navigation Links */}
         <div className="flex-grow text-center">
           <ul className="flex justify-center space-x-6">
             <li>
@@ -31,7 +31,7 @@ export default function Navbar() {
           </ul>
         </div>
 
-        {/* Dark Mode Toggle à droite */}
+        {/* Dark Mode Toggle on the right */}
         <div className="ml-auto">
           <ThemeToggle />
         </div>

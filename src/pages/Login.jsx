@@ -12,7 +12,7 @@ export default function Login() {
     e.preventDefault();
 
     if (!email || !password) {
-      setError("Veuillez remplir tous les champs.");
+      setError("Please fill in all the fields.");
       return;
     }
 
@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <div className="max-w-md mx-auto mt-10 bg-white dark:bg-gray-800 p-6 rounded shadow">
       <h2 className="text-2xl font-bold mb-4 text-center text-blue-700 dark:text-blue-300">
-        Se connecter
+      Log In
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -41,7 +41,7 @@ export default function Login() {
         />
         <input
           type="password"
-          placeholder="Mot de passe"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full px-4 py-2 rounded border focus:outline-none focus:ring focus:ring-blue-400"

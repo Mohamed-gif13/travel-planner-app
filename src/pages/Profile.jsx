@@ -26,12 +26,12 @@ export default function Profile() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow p-6">
-        <h2 className="text-2xl font-bold mb-4">👤 Profil de l'utilisateur</h2>
+        <h2 className="text-2xl font-bold mb-4">👤 User Profile </h2>
         <p className="mb-4">📧 <strong>Email :</strong> {user?.email}</p>
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">🧳 Vos destinations :</h3>
+        <h3 className="text-xl font-semibold mt-6 mb-2">🧳 Your Destinations :</h3>
         {itinerary.length === 0 ? (
-          <p className="text-gray-500">Aucune destination enregistrée.</p>
+          <p className="text-gray-500"> No destinations saved.</p>
         ) : (
           <ul className="space-y-2">
             {itinerary.map((item) => (
@@ -46,7 +46,7 @@ export default function Profile() {
           onClick={handleLogout}
           className="mt-6 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
         >
-          Se déconnecter
+          Log Out
         </button>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Weather from "./Weather";
 import MapBox from "./MapBox";
 import SkyscannerLinks from "./SkyscannerLinks";
+import TripAdvisorResults from "./TripAdvisorResults";
 
 export default function CitySearch() {
   const [city, setCity] = useState("");
@@ -122,6 +123,8 @@ export default function CitySearch() {
           </div>
 
           <SkyscannerLinks city={search} />
+          <TripAdvisorResults city={search} />
+
         </div>
       )}
     </div>
