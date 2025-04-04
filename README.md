@@ -11,6 +11,7 @@ A modern travel planning web application built with **React**, **Tailwind CSS**,
 - Live weather information (OpenWeatherMap API)
 - Dynamic city images (Unsplash)
 - Travel booking links (Flights, Hotels, Cars) via Skyscanner
+-TripAdvisor integration with filters (restaurants, hotels, attractions)
 - Create and manage a personal **travel itinerary**
 - Simple authentication (Signup/Login) using `localStorage`
 - Light/Dark mode toggle
